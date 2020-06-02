@@ -20,7 +20,7 @@ RedirectMatch 301 ^/(docs-dev)/(concepts|intro|reference|release-notes|specs|tut
 # Redirect latest-release version-number URLs (/v<X.Y/X.Y.Z (latest release)>/*
 # > /latest-release/*)
 # [TODO-NEW-VER] Update the hardcoded version number in the source URL.
-RedirectMatch 301 ^/(docs-dev)/v2.5(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release/$3
+RedirectMatch 301 ^/(docs-dev)/v2.8(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release/$3
 
 #///////////////////////////////////////
 ## Relocated-Pages Redirects
