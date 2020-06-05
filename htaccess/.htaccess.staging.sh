@@ -32,6 +32,12 @@ RedirectMatch 301 ^/(docs)/v2.8(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com
 RedirectMatch 301 ^/(docs/[^/]+)/intro/architecture(|/.*)$ https://igzdocsdev.wpengine.com/$1
 
 #---------------------------------------
+## Pages Moved in V2.8
+
+# DNS & SMTP setup intro pages moved to a howto/ subdirectory
+RedirectMatch 301 ^/(docs/latest-release/intro/setup)/(dns|smtp)(|/.*)$ https://igzdocsdev.wpengine.com/$1/howto/$2
+
+#---------------------------------------
 ## Pages Removed for v2.5.4 and v2.3.1 Post Publication
 
 # Trial-QS tutorials GS page (consolidated with the tutorial QS index page)
