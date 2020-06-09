@@ -212,7 +212,7 @@
     "installerPublicIpAddressName": "[concat(variables('systemId'), '-installer-public-ip-address')]",
     "temporaryAdminUsername": "iguazio",
     "temporaryAdminPassword": "IguazioTemporaryAdminPass0!",
-    "provisionScriptFileUri": "https://gist.githubusercontent.com/pavius/a58b1b3e7dce95b357a277eddc2901c6/raw/cd0ca56d3058274b5d5940c5217072347599c34f/install.py",
+    "provisionScriptFileUri": "https://gist.githubusercontent.com/pavius/a58b1b3e7dce95b357a277eddc2901c6/raw/4fbaa124e251f8cc6644bd754ccf3788e9676aac/install.py",
     "servicePrincipalArguments": "[if(empty(parameters('spClientSecret')), '', concat(' --sp-tenant-id ', parameters('spTenantId'), ' --sp-subscription-id ', parameters('spSubscriptionId'), ' --sp-client-id ', parameters('spClientId'), ' --sp-client-secret ', parameters('spClientSecret')))]",
     "whitelistIguazioNetworkArgument": "[if(and(parameters('allocatePublicIpAddresses'), parameters('whitelistIguazioNetwork')), ' --whitelist-iguazio-network', '')]",
     "whitelistCidrsArgument": "[if(empty(parameters('whitelistedCidrs')), '', concat(' --whitelisted-cidrs ', parameters('whitelistedCidrs')))]",
