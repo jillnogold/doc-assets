@@ -216,13 +216,17 @@
     "servicePrincipalArguments": "[if(empty(parameters('spClientSecret')), '', concat(' --sp-tenant-id ', parameters('spTenantId'), ' --sp-subscription-id ', parameters('spSubscriptionId'), ' --sp-client-id ', parameters('spClientId'), ' --sp-client-secret ', parameters('spClientSecret')))]",
     "whitelistIguazioNetworkArgument": "[if(and(parameters('allocatePublicIpAddresses'), parameters('whitelistIguazioNetwork')), ' --whitelist-iguazio-network', '')]",
     "whitelistCidrsArgument": "[if(empty(parameters('whitelistedCidrs')), '', concat(' --whitelisted-cidrs ', parameters('whitelistedCidrs')))]",
-    "installerSecurityGroupName": "[concat(variables('systemId'), '-installer-security-group')]"
+    "installerSecurityGroupName": "[concat(variables('systemId'), '-installer-security-group')]",
+    "defaultTags": {
+      "iguazio.systemId": "[variables('systemId')]"
+    }
   },
   "resources": [
     {
       "apiVersion": "2019-09-01",
       "name": "pid-f411eedf-bb7e-527b-ae81-41951177ba9c",
       "type": "Microsoft.Resources/deployments",
+      "tags": "[variables('defaultTags')]",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -237,6 +241,7 @@
       "type": "Microsoft.Network/applicationSecurityGroups",
       "apiVersion": "2018-11-01",
       "location": "[parameters('location')]",
+      "tags": "[variables('defaultTags')]",
       "properties": {}
     },
     {
@@ -244,6 +249,7 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "apiVersion": "2018-11-01",
       "location": "[parameters('location')]",
+      "tags": "[variables('defaultTags')]",
       "properties": {
         "securityRules": []
       }
@@ -257,6 +263,7 @@
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkSecurityGroups', variables('vnetSecurityGroupName'))]"
       ],
+      "tags": "[variables('defaultTags')]",
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
@@ -282,6 +289,7 @@
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[variables('installerPublicIpAddressName')]",
       "location": "[parameters('location')]",
+      "tags": "[variables('defaultTags')]",
       "properties": {
         "publicIPAllocationMethod": "Static"
       }
@@ -296,6 +304,7 @@
         "[resourceId('Microsoft.Network/publicIPAddresses/', variables('installerPublicIpAddressName'))]",
         "[resourceId('Microsoft.Network/virtualNetworks/', variables('vnetName'))]"
       ],
+      "tags": "[variables('defaultTags')]",
       "properties": {
         "ipConfigurations": [
           {
@@ -332,6 +341,7 @@
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces/', variables('installerNicName'))]"
       ],
+      "tags": "[variables('defaultTags')]",
       "properties": {
         "hardwareProfile": {
           "vmSize": "Standard_D8s_v3"
@@ -374,6 +384,7 @@
       "dependsOn": [
         "[variables('installerVmName')]"
       ],
+      "tags": "[variables('defaultTags')]",
       "properties": {
         "roleDefinitionId": "[concat('/subscriptions/',subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
         "principalId": "[reference(variables('installerVmName'), '2017-12-01', 'Full').identity.principalId]",
@@ -388,6 +399,7 @@
       "dependsOn": [
         "[resourceId('Microsoft.Compute/virtualMachines/', variables('installerVmName'))]"
       ],
+      "tags": "[variables('defaultTags')]",
       "properties": {
         "publisher": "Microsoft.Azure.Extensions",
         "type": "DockerExtension",
@@ -405,6 +417,7 @@
         "[variables('installerVmName')]",
         "[concat('Microsoft.Compute/virtualMachines/', variables('installerVmName'), '/extensions/docker')]"
       ],
+      "tags": "[variables('defaultTags')]",
       "properties": {
         "publisher": "Microsoft.Azure.Extensions",
         "type": "CustomScript",
