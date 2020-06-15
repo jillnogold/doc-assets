@@ -6,6 +6,8 @@
 # with a starts-with rule should begin with "^/docs".
 
 #///////////////////////////////////////
+## Obsolete Multi-Versioned Site URLs
+
 # Redirect old versioned sections URLs (<section>/<version>/ where <version> is
 # "vX.Y" or "latest-release") to <version>/<section>
 # <section>/vX.Y/* > latest-release/)
@@ -17,13 +19,17 @@ RedirectMatch 301 ^/(docs)/(concepts|intro|reference|specs|tutorials)/(v[0-9]\.[
 RedirectMatch 301 ^/(docs)/(concepts|intro|reference|release-notes|specs|tutorials)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release/$2/$3
 
 #///////////////////////////////////////
-# Redirect latest-release version-number URLs (/v<X.Y/X.Y.Z (latest release)>/*
-# > /latest-release/*)
+## Latest-Release Version-Number URLs
+#(/v<X.Y/X.Y.Z (latest release)>/* > /latest-release/*)
 # [TODO-NEW-VER] Update the hardcoded version number in the source URL.
 RedirectMatch 301 ^/(docs)/v2.8(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release/$3
 
 #///////////////////////////////////////
-## Relocated-Pages Redirects
+## Removed Old-Release Doc Sites (No Longer Published)
+RedirectMatch 301 ^/(docs)/v2.3(|.[0-9])(|/.*)$ https://www.igzdocsdev.wpengine.com/$1/latest-release/
+
+#///////////////////////////////////////
+## Relocated Pages
 # [ci-redirect-from-ver-site] [InfraInfo] See gulpfile.js in the doc-site repo.
 
 #---------------------------------------
