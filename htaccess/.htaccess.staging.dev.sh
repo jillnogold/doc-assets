@@ -19,7 +19,7 @@ RedirectMatch 301 ^/(docs-dev)/(concepts|intro|reference|specs|tutorials)/(v[0-9
 RedirectMatch 301 ^/(docs-dev)/(concepts|intro|reference|release-notes|specs|tutorials)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release/$2/$3
 
 #///////////////////////////////////////
-## Latest-release Version-Number URLs
+## Latest-Release Version-Number URLs
 #(/v<X.Y/X.Y.Z (latest release)>/* > /latest-release/*)
 # [TODO-NEW-VER] Update the hardcoded version number in the source URL.
 RedirectMatch 301 ^/(docs-dev)/v2.8(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release/$3
