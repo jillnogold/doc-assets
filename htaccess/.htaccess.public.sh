@@ -26,29 +26,60 @@ RedirectMatch 301 ^/(docs)/v2.8(\.[0-9]|)(|/.*)$ https://www.iguazio.com/$1/late
 
 #///////////////////////////////////////
 ## Removed Old-Release Doc Sites (No Longer Published)
-RedirectMatch 301 ^/(docs)/v2.3(|.[0-9])(|/.*)$ https://www.iguazio.com/$1/latest-release/
+# [ci-docs-archive-redirects] The v1.9-v2.2 docs-archive site pages are first
+# redirected to matching docs/* pages from sites/igz/.htaccess. Pages that are
+# no longer found in latest-release are redirected later in this file.
+RedirectMatch 301 ^/(docs)/v(2.3|2.2|2.1|2.0|1.9)(|.[0-9])(|/.*)$ https://www.iguazio.com/$1/latest-release$4
 
 #///////////////////////////////////////
 ## Relocated Pages
 # [ci-redirect-from-ver-site] [InfraInfo] See gulpfile.js in the doc-site repo.
 
 #---------------------------------------
-## Temporarily Removed Pages
-# [c-arch-page-update] See the IntInfo in the architecture.md intro page.
-RedirectMatch 301 ^/(docs/[^/]+)/intro/architecture(|/.*)$ https://www.iguazio.com/$1
+## Pages Moved or Removed in v2.0
+# (The old v1.9-v2.2 URLs are redirected to the current-site latest-release docs
+# from the root sites/<site>/.htaccess file.)
+
+# Data-pipeline intro (removed)
+RedirectMatch 301 /(latest-release/intro)/data-pipeline(|/*)$ https://www.iguazio.com/docs/$1/introduction/
+
+# Cloud-trial getting-started tutorials that moved out of the trial QSs
+# Ingestion & consumption QS
+RedirectMatch 301 /(latest-release/tutorials/getting-started)/trial-qs/(ingest-n-consume-files)(|/*)$ https://www.iguazio.com/docs/$1/$2/
+# Grafana-dashboards QS
+RedirectMatch 301 /(latest-release/tutorials/getting-started)/trial-qs/(grafana-dashboards)(|/*)$ https://www.iguazio.com/docs/$1/$2/
+
+# Presto cloud-trial QS tutorial (removed in v2.0 - reference-doc duplication)
+RedirectMatch 301 /(latest-release)/tutorials/getting-started/trial-qs/(presto)(|/*)$ https://www.iguazio.com/docs/$1/reference/$2/overview/
+
+# Development QS (removed - non-k8s doc)
+RedirectMatch 301 /(latest-release/tutorials/getting-started)/development-qs(|/*)$ https://www.iguazio.com/docs/$1/
+
+# Data-copy QS tutorial (removed - non-k8s doc)
+RedirectMatch 301 /(latest-release/tutorials/getting-started)/data-copy-qs(|/*)$ https://www.iguazio.com/docs/$1/ingest-n-consume-files/
+
+# Spark data-ingestion QS tutorial (moved)
+RedirectMatch 301 /(latest-release/tutorials)/getting-started/data-ingestion/data-ingestion-w-spark-qs(|/*)$ https://www.iguazio.com/docs/$1/getting-started/data-ingestion-w-spark-qs/
+
+# Data-ingestion QSs tutorials directory (removed)
+RedirectMatch 301 /(latest-release/tutorials)/getting-started/data-ingestion(|/*)$ https://www.iguazio.com/docs/$1/getting-started/ingest-n-consume-files/
+
+#---------------------------------------
+## Pages Removed in v2.5 and v2.3 Post Publication
+
+# Architecture intro (temporarily excluded since v2.3)
+# [c-arch-page-update] See the IntInfo in intro/architecture.md (doc-site repo).
+RedirectMatch 301 ^/(docs/[^/]+/intro)/architecture(|/.*)$ https://www.iguazio.com/$1/introduction/
+
+# Trial-QS tutorials GS page (consolidated with the tutorial QS index page)
+RedirectMatch 301 ^/(docs/[^/]+/tutorials/getting-started/trial-qs/)overview(|/.*)$ https://www.iguazio.com/$1
+
+# Additional-resources" tutorials GS page (moved to an introduction section)
+RedirectMatch 301 ^/(docs/[^/]+)/tutorials/getting-started/additional-resources(|/.*)$ https://www.iguazio.com/$1/intro/introduction/#platform-resources
 
 #---------------------------------------
 ## Pages Moved in V2.8
 
 # DNS & SMTP setup intro pages moved to a howto/ subdirectory
 RedirectMatch 301 ^/(docs/latest-release/intro/setup)/(dns|smtp)(|/.*)$ https://www.iguazio.com/$1/howto/$2
-
-#---------------------------------------
-## Pages Removed for v2.5.4 and v2.3.1 Post Publication
-
-# Trial-QS tutorials GS page (consolidated with the tutorial QS index page)
-RedirectMatch 301 ^/(docs/[^/]+/tutorials/getting-started/trial-qs/)overview(|/.*)$ https://www.iguazio.com/$1$2
-
-# Additional-resources" tutorials GS page (moved to an introduction section)
-RedirectMatch 301 ^/(docs/[^/]+)/tutorials/getting-started/(additional-resources)(|/.*)$ https://www.iguazio.com/$1/intro/introduction/#$2
 
