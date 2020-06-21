@@ -26,7 +26,7 @@ RedirectMatch 301 ^/(docs-dev)/v2.5(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine
 
 #///////////////////////////////////////
 ## Removed Old-Release Doc Sites (No Longer Published)
-RedirectMatch 301 ^/(docs-dev)/v2.3(|.[0-9])(|/.*)$ https://www.igzdocsdev.wpengine.com/$1/latest-release/
+RedirectMatch 301 ^/(docs-dev)/v2.3(|.[0-9])(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release/
 
 #///////////////////////////////////////
 ## Relocated Pages
