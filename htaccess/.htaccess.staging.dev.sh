@@ -60,3 +60,23 @@ RedirectMatch 301 ^/(docs-dev/[^/]+)/tutorials/getting-started/additional-resour
 # DNS & SMTP setup intro pages moved to a howto/ subdirectory
 RedirectMatch 301 ^/(docs-dev/latest-release/intro/setup)/(dns|smtp)(|/.*)$ https://igzdocsdev.wpengine.com/$1/howto/$2
 
+#=======================================
+## Pages Added and Renamed (Moved) in V2.8.0
+# The following redirects are for pages that were added in v2.8.0, when it was
+# the latest-release doc, and then renamed (=> URLs changed) shortly after the
+# initial publication. => It's sufficient to apply the rules to latest-release.
+
+# Cloud-installation how-tos
+# calculate-resources/ > resources-calculate/
+RedirectMatch 301 ^/(docs-dev/latest-release/intro/setup/cloud/(aws|azure)/howto)/calculate-resources(|/)$ https://igzdocsdev.wpengine.com/$1/resources-calculate/
+# configure-security-groups/ > network-security-groups-cfg/
+RedirectMatch 301 ^/(docs-dev/latest-release/intro/setup/cloud/(aws|azure)/howto)/configure-security-groups(|/)$ https://igzdocsdev.wpengine.com/$1/network-security-groups-cfg/
+# configure-subnet-public-ips-alloc/ > subnet-public-ips-alloc-cfg/
+RedirectMatch 301 ^/(docs-dev/latest-release/intro/setup/cloud/(aws|azure)/howto)/configure-subnet-public-ips-alloc(|/)$ https://igzdocsdev.wpengine.com/$1/subnet-public-ips-alloc-cfg/
+# create-iam-role/ > iam-role-n-instance-profile-create/
+RedirectMatch 301 ^/(docs-dev/latest-release/intro/setup/cloud/(aws|azure)/howto)/create-iam-role(|/)$ https://igzdocsdev.wpengine.com/$1/iam-role-n-instance-profile-create/
+# create-iam-user/ > iam-user-create/
+RedirectMatch 301 ^/(docs-dev/latest-release/intro/setup/cloud/(aws|azure)/howto)/create-iam-user(|/)$ https://igzdocsdev.wpengine.com/$1/iam-user-create/
+# prepare-install/ > pre-install-steps/
+RedirectMatch 301 ^/(docs-dev/latest-release/intro/setup/cloud/(aws|azure)/howto)/prepare-install(|/)$ https://igzdocsdev.wpengine.com/$1/pre-install-steps/
+
