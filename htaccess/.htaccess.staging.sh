@@ -1,6 +1,7 @@
 ########################################
 ## URL Redirects - root directory of the docs staging site (non-versioned)
 # [ci-redirect] [InfraInfo] See gulpfile.js in the doc-site repo.
+# Some redirects are handled via Hugo aliases in the Markdown front matter.
 
 # [InfraInfo] (sharonl) The source URL starts with "/docs" => RedirectMatch
 # with a starts-with rule should begin with "^/docs".
@@ -88,6 +89,9 @@ RedirectMatch 301 ^/(docs/latest-release/intro/setup)/(dns|smtp)(|/.*)$ https://
 # The following redirects are for pages that were added in v2.8.0, when it was
 # the latest-release doc, and then renamed (=> URLs changed) shortly after the
 # initial publication. => It's sufficient to apply the rules to latest-release.
+
+# BM & VM HW specs (replaced with a single on-prem HW spec) (8.9.20)
+RedirectMatch 301 ^/(docs/(latest-release|v2.8)/specs/hardware)/(bare-metal|vm)(-hw-spec)(|/*)$ https://igzdocsdev.wpengine.com/$1/on-prem$4$5
 
 # Cloud-installation how-tos
 # calculate-resources/ > resources-calculate/
