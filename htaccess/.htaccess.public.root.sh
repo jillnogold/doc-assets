@@ -134,6 +134,13 @@ RewriteRule ^.*$ $0 [R=302,L,NE]
 # handled from docs/.htaccess using the new URLs from the following redirect.
 RedirectMatch 301 ^/(docs-archive|techpreview)(|/.*)$ https://www.iguazio.com/docs/$2
 
+## Obsolete Temporary Draft-Sites Redirects
+## doc-drafts/vm-install/ - V2.10.0 latest-release VM-installation draft site
+# (23.11.20) Replaced with public on-prem VM installation docs (doc-site PR
+# #2226). TODO: Remove the redirect rule after an adjustment period for
+# customers who had used the draft site.
+RedirectMatch 301 ^/doc-drafts/vm-install(|/.*)$ https://www.iguazio.com/docs/latest-release/$1
+
 ## Docs home (base doc-site URL) > latest-release/ home
 RedirectMatch 301 ^/(docs)(/|)$ https://www.iguazio.com/$1/latest-release/
 
