@@ -25,6 +25,17 @@ RedirectMatch 301 ^/(docs-dev)/(concepts|intro|reference|release-notes|specs|tut
 # [TODO-NEW-VER] Update the hardcoded version number in the source URL.
 RedirectMatch 301 ^/(docs-dev)/v2.10(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release/$3
 
+## Next-Release Version-Number URLs
+#(/v<X.Y/X.Y.Z (next minor release)>/* > /latest-release/*)
+# [InfraInfo] (sharonl) (12.1.21) It was decided that in order to allow linking
+# to the relevant versioned product documentation from external sources - such
+# as the product dashboard (UI) and v3io/tutorials - as part of the development
+# for the next product release, before we've published related documentation,
+# we'll also redirect docs/vX.Y URLs for the next minor release to the latest
+# docs.
+# [TODO-NEW-VER] Update the hardcoded version number in the source URL.
+RedirectMatch 301 ^/(docs-dev)/v3.0(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release/$3
+
 #///////////////////////////////////////
 ## Removed Old-Release Doc Sites (No Longer Published)
 #[InfraInfo] We don't redirect old v1.9-v2.2 URLs, like in docs/.htaccess,
