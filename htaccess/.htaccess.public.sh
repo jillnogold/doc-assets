@@ -23,7 +23,7 @@ RedirectMatch 301 ^/(docs)/(concepts|intro|reference|release-notes|specs|tutoria
 ## Latest-Release Version-Number URLs
 #(/v<X.Y/X.Y.Z (latest release)>/* > /latest-release/*)
 # [TODO-NEW-VER] Update the hardcoded version number in the source URL.
-RedirectMatch 301 ^/(docs)/v2.10(\.[0-9]|)(|/.*)$ https://www.iguazio.com/$1/latest-release/$3
+RedirectMatch 301 ^/(docs)/v3.0(\.[0-9]|)(|/.*)$ https://www.iguazio.com/$1/latest-release/$3
 
 ## Next-Release Version-Number URLs
 #(/v<X.Y/X.Y.Z (next minor release)>/* > /latest-release/*)
@@ -34,7 +34,7 @@ RedirectMatch 301 ^/(docs)/v2.10(\.[0-9]|)(|/.*)$ https://www.iguazio.com/$1/lat
 # we'll also redirect docs/vX.Y URLs for the next minor release to the latest
 # docs.
 # [TODO-NEW-VER] Update the hardcoded version number in the source URL.
-RedirectMatch 301 ^/(docs)/v3.0(\.[0-9]|)(|/.*)$ https://www.iguazio.com/$1/latest-release/$3
+RedirectMatch 301 ^/(docs)/v3.1(\.[0-9]|)(|/.*)$ https://www.iguazio.com/$1/latest-release/$3
 
 #///////////////////////////////////////
 ## Removed Old-Release Doc Sites (No Longer Published)
