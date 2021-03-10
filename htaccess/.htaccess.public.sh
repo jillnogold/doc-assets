@@ -189,5 +189,5 @@ RedirectMatch 301 /(latest-release)/tutorials/getting-started/data-copy-qs(|/*)$
 RedirectMatch 301 /(latest-release)/tutorials/getting-started/data-ingestion/(data-ingestion-w-spark-qs)(|/*)$ https://www.iguazio.com/docs/$1/data-layer/$2/
 
 # Data-ingestion QSs tutorials directory (removed)
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/data-ingestion(|/*)$https://www.iguazio.com/docs/$1/intro/data-ingestion-and-preparation/
+RedirectMatch 301 /(latest-release)/tutorials/getting-started/data-ingestion(|/*) $https://www.iguazio.com/docs/$1/intro/data-ingestion-and-preparation/
 
