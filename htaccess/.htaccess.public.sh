@@ -53,6 +53,23 @@ RedirectMatch 301 ^/(docs)/v3.1(\.[0-9]|)(|/.*)$ https://www.iguazio.com/$1/late
 RedirectMatch 301 ^/(docs)/v(2.3|2.2|2.1|2.0|1.9)(|.[0-9])(|/.*)$ https://www.iguazio.com/$1/latest-release$4
 
 #///////////////////////////////////////
+## External Doc-Site URL Errors
+# [IntInfo] (sharonl) Redirect rules to handle errors in external doc-site
+# links.
+
+# ecosystem/app-services/ > intro/ecosystem/app-services/
+# [IntInfo] (sharonl) (17.3.21) I found that the v3.0.0 and v3.0.1 dashboard
+# (UI) Help Center | "Application Services" tile has an error in the URL -
+# missing intro/ - which is probably also true in earlier releases.
+# [SITE-RESTRUCT] In v3.0.0, this URL moved to services/app-services/. This is
+# handled by a redirect rule later in this file. I've now also updated the UI
+# URL, for future releases (after v3.0.1) to refer to to services/app-services/.
+# (Note: I only redirected latest-release/, because until v3.0, the UI doc-site
+# links were always to the latest-release doc site; in v3.0.0 we moved to
+# versioned URLs to match the platform version.)
+RedirectMatch 301 ^/(docs/latest-release)/ecosystem/(app-services)(|/.*)$ https://www.iguazio.com/$1/services/$2$3
+
+#///////////////////////////////////////
 ## Relocated Pages
 # [ci-redirect-from-ver-site] [InfraInfo] See gulpfile.js in the doc-site repo.
 
@@ -62,28 +79,28 @@ RedirectMatch 301 ^/(docs)/v(2.3|2.2|2.1|2.0|1.9)(|.[0-9])(|/.*)$ https://www.ig
 # from the root sites/<site>/.htaccess file.)
 
 # Data-pipeline intro (removed)
-RedirectMatch 301 /(latest-release/intro)/data-pipeline(|/*)$ https://www.iguazio.com/docs/$1/introduction/
+RedirectMatch 301 ^/(docs/latest-release/intro)/data-pipeline(|/*)$ https://www.iguazio.com/$1/introduction/
 
 # Cloud-trial getting-started tutorials that moved out of the trial QSs
 # Ingestion & consumption QS
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/trial-qs/(ingest-n-consume-files)(|/*)$ https://www.iguazio.com/docs/$1/data-layer/objects/$2/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/trial-qs/(ingest-n-consume-files)(|/*)$ https://www.iguazio.com/$1/data-layer/objects/$2/
 # Grafana-dashboards QS
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/trial-qs/(grafana-dashboards)(|/*)$ https://www.iguazio.com/docs/$1/services/$2/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/trial-qs/(grafana-dashboards)(|/*)$ https://www.iguazio.com/$1/services/$2/
 
 # Presto cloud-trial QS tutorial (removed in v2.0 - reference-doc duplication)
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/trial-qs/(presto)(|/*)$ https://www.iguazio.com/docs/$1/data-layer/$2/overview/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/trial-qs/(presto)(|/*)$ https://www.iguazio.com/$1/data-layer/$2/overview/
 
 # Development QS (removed - non-k8s doc)
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/development-qs(|/*)$ https://www.iguazio.com/docs/$1/intro/introduction/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/development-qs(|/*)$ https://www.iguazio.com/$1/intro/introduction/
 
 # Data-copy QS tutorial (removed - non-k8s doc)
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/data-copy-qs(|/*)$ https://www.iguazio.com/docs/$1/data-layer/objects/ingest-n-consume-files/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/data-copy-qs(|/*)$ https://www.iguazio.com/$1/data-layer/objects/ingest-n-consume-files/
 
 # Spark data-ingestion QS tutorial (moved)
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/data-ingestion/(data-ingestion-w-spark-qs)(|/*)$ https://www.iguazio.com/docs/$1/data-layer/$2/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/data-ingestion/(data-ingestion-w-spark-qs)(|/*)$ https://www.iguazio.com/$1/data-layer/$2/
 
 # Data-ingestion QSs tutorials directory (removed)
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/data-ingestion(|/*) $https://www.iguazio.com/docs/$1/intro/data-ingestion-and-preparation/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/data-ingestion(|/*)$ https://www.iguazio.com/$1/intro/data-ingestion-and-preparation/
 
 #---------------------------------------
 ## Pages Removed in v2.5 and v2.3 Post Publication
@@ -93,7 +110,7 @@ RedirectMatch 301 /(latest-release)/tutorials/getting-started/data-ingestion(|/*
 RedirectMatch 301 ^/(docs/[^/]+/intro)/architecture(|/.*)$ https://www.iguazio.com/$1/introduction/
 
 # Trial-QS tutorials GS page (consolidated with the tutorial QS index page)
-RedirectMatch 301 ^/(docs/[^/]+)/tutorials/getting-started/(trial-qs/)overview(|/.*)$ https://www.iguazio.com/$1/intro$2
+RedirectMatch 301 ^/(docs/[^/]+)/tutorials/getting-started/(trial-qs)/overview(|/.*)$ https://www.iguazio.com/$1/intro/$2
 
 # Additional-resources" tutorials GS page (moved to an introduction section)
 RedirectMatch 301 ^/(docs/[^/]+)/tutorials/getting-started/additional-resources(|/.*)$ https://www.iguazio.com/$1/intro/introduction/#platform-resources
@@ -140,7 +157,7 @@ RedirectMatch 301 ^/(docs/latest-release)/intro/setup/(cloud/(aws|azure)/howto)/
 # intro/ecosystem/
 RedirectMatch 301 ^/(docs/latest-release/intro)/ecosystem/(ui)(|/.*)$ https://www.iguazio.com/$1/$2$3
 RedirectMatch 301 ^/(docs/latest-release)/intro/ecosystem/data-fabric(|/.*)$ https://www.iguazio.com/$1/data-layer$2
-RedirectMatch 301 ^/(docs/latest-release)/intro/(app-services)(|/.*)$ https://www.iguazio.com/$1/services/$2$3
+RedirectMatch 301 ^/(docs/latest-release)/intro/ecosystem/(app-services)(|/.*)$ https://www.iguazio.com/$1/services/$2$3
 RedirectMatch 301 ^/(docs/latest-release)/intro/ecosystem(|/.*)$ https://www.iguazio.com/$1/services/
 # intro/logging-n-debugging/
 RedirectMatch 301 ^/(docs/latest-release)/intro/(logging-n-debugging)(|/.*)$ https://www.iguazio.com/$1/cluster-mgmt/$2$3
