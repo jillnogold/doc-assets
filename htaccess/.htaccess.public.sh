@@ -21,7 +21,7 @@
 # Redirect old versioned sections URLs (<section>/<version>/ where <version> is
 # "vX.Y" or "latest-release") to <version>/<section>
 # <section>/vX.Y/* > latest-release/)
-RedirectMatch 301 ^/(docs)/(concepts|intro|reference|specs|tutorials)/(v[0-9]\.[0-9]|latest-release)(|/.*)$ https://www.iguazio.com/$1/$3/$2$4
+RedirectMatch 301 ^/(docs)/(concepts|intro|reference|release-notes|specs|tutorials)/(v[0-9]\.[0-9]|latest-release)(|/.*)$ https://www.iguazio.com/$1/$3/$2$4
 
 # Redirect old non-versioned section pages (such as release-notes/*) and all
 # section root-directory URLs (<section>/ - after the <section>/<version>/
