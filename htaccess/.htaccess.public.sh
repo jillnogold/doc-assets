@@ -50,7 +50,7 @@ RedirectMatch 301 ^/(docs)/v3.1(\.[0-9]|)(|/.*)$ https://www.iguazio.com/$1/late
 # [ci-docs-archive-redirects] The v1.9-v2.2 docs-archive site pages are first
 # redirected to matching docs/* pages from sites/igz/.htaccess. Pages that are
 # no longer found in latest-release are redirected later in this file.
-RedirectMatch 301 ^/(docs)/v(2.3|2.2|2.1|2.0|1.9)(|.[0-9])(|/.*)$ https://www.iguazio.com/$1/latest-release$4
+RedirectMatch 301 ^/(docs)/v(2.5|2.3|2.2|2.1|2.0|1.9)(|.[0-9])(|/.*)$ https://www.iguazio.com/$1/latest-release$4
 
 #///////////////////////////////////////
 ## Relocated Pages
