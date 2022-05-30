@@ -21,7 +21,7 @@
 # Redirect old versioned sections URLs (<section>/<version>/ where <version> is
 # "vX.Y" or "latest-release") to <version>/<section>
 # <section>/vX.Y/* > latest-release/)
-RedirectMatch 301 ^/(docs)/(concepts|intro|reference|specs|tutorials)/(v[0-9]\.[0-9]|latest-release)(|/.*)$ https://www.iguazio.com/$1/$3/$2$4
+RedirectMatch 301 ^/(docs)/(concepts|intro|reference|release-notes|specs|tutorials)/(v[0-9]\.[0-9]|latest-release)(|/.*)$ https://www.iguazio.com/$1/$3/$2$4
 
 # Redirect old non-versioned section pages (such as release-notes/*) and all
 # section root-directory URLs (<section>/ - after the <section>/<version>/
@@ -32,7 +32,7 @@ RedirectMatch 301 ^/(docs)/(concepts|intro|reference|release-notes|specs|tutoria
 ## Latest-Release Version-Number URLs
 #(/v<X.Y/X.Y.Z (latest release)>/* > /latest-release/*)
 # [TODO-NEW-VER] Update the hardcoded version number in the source URL.
-RedirectMatch 301 ^/(docs)/v3.0(\.[0-9]|)(|/.*)$ https://www.iguazio.com/$1/latest-release$3
+RedirectMatch 301 ^/(docs)/v3(\.[0-9]|)(|/.*)$ https://www.iguazio.com/$1/latest-release$3
 
 ## Next-Release Version-Number URLs
 #(/v<X.Y/X.Y.Z (next minor release)>/* > /latest-release/*)
@@ -50,7 +50,7 @@ RedirectMatch 301 ^/(docs)/v3.1(\.[0-9]|)(|/.*)$ https://www.iguazio.com/$1/late
 # [ci-docs-archive-redirects] The v1.9-v2.2 docs-archive site pages are first
 # redirected to matching docs/* pages from sites/igz/.htaccess. Pages that are
 # no longer found in latest-release are redirected later in this file.
-RedirectMatch 301 ^/(docs)/v(2.3|2.2|2.1|2.0|1.9)(|.[0-9])(|/.*)$ https://www.iguazio.com/$1/latest-release$4
+RedirectMatch 301 ^/(docs)/v(2.5|2.3|2.2|2.1|2.0|1.9)(|.[0-9])(|/.*)$ https://www.iguazio.com/$1/latest-release$4
 
 #///////////////////////////////////////
 ## External Doc-Site URL Errors
