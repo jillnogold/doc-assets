@@ -43,7 +43,7 @@ RedirectMatch 301 ^/(docs)/v3(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$
 # we'll also redirect docs/vX.Y URLs for the next minor release to the latest
 # docs.
 # [TODO-NEW-VER] Update the hardcoded version number in the source URL.
-RedirectMatch 301 ^/(docs)/v3.1(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release$3
+RedirectMatch 301 ^/(docs)/v3.5(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release$3
 
 #///////////////////////////////////////
 ## Removed Old-Release Doc Sites (No Longer Published)
