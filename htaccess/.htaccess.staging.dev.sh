@@ -32,7 +32,7 @@ RedirectMatch 301 ^/(docs-dev)/(concepts|intro|reference|release-notes|specs|tut
 ## Latest-Release Version-Number URLs
 #(/v<X.Y/X.Y.Z (latest release)>/* > /latest-release/*)
 # [TODO-NEW-VER] Update the hardcoded version number in the source URL.
-RedirectMatch 301 ^/(docs-dev)/v3.0(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release$3
+RedirectMatch 301 ^/(docs-dev)/v3.5(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release$3
 
 ## Next-Release Version-Number URLs
 #(/v<X.Y/X.Y.Z (next minor release)>/* > /latest-release/*)
@@ -43,7 +43,7 @@ RedirectMatch 301 ^/(docs-dev)/v3.0(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine
 # we'll also redirect docs/vX.Y URLs for the next minor release to the latest
 # docs.
 # [TODO-NEW-VER] Update the hardcoded version number in the source URL.
-RedirectMatch 301 ^/(docs-dev)/v3.1(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release$3
+RedirectMatch 301 ^/(docs-dev)/v3.6(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release$3
 
 #///////////////////////////////////////
 ## Removed Old-Release Doc Sites (No Longer Published)
@@ -52,6 +52,24 @@ RedirectMatch 301 ^/(docs-dev)/v3.1(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine
 # URLs are now redirected to the docs/ site from the root
 # sites/igzdocsdev/.htaccess file [ci-docs-archive-redirects].
 RedirectMatch 301 ^/(docs-dev)/v2.3(|.[0-9])(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release$3
+
+#///////////////////////////////////////
+## External Doc-Site URL Errors
+# [IntInfo] (sharonl) Redirect rules to handle errors in external doc-site
+# links. These rules aren't really required for the staging sites, but I added
+# them for consistency with the public site and for testing.
+
+# ecosystem/app-services/ > intro/ecosystem/app-services/
+# [IntInfo] (sharonl) (17.3.21) I found that the v3.0.0 and v3.0.1 dashboard
+# (UI) Help Center | "Application Services" tile has an error in the URL -
+# missing intro/ - which is probably also true in earlier releases.
+# [SITE-RESTRUCT] In v3.0.0, this URL moved to services/app-services/. This is
+# handled by a redirect rule later in this file. I've now also updated the UI
+# URL, for future releases (after v3.0.1) to refer to to services/app-services/.
+# (Note: I only redirected latest-release/, because until v3.0, the UI doc-site
+# links were always to the latest-release doc site; in v3.0.0 we moved to
+# versioned URLs to match the platform version.)
+RedirectMatch 301 ^/(docs-dev/latest-release)/ecosystem/(app-services)(|/.*)$ https://igzdocsdev.wpengine.com/$1/services/$2$3
 
 #///////////////////////////////////////
 ## Relocated Pages
@@ -71,7 +89,7 @@ RedirectMatch 301 ^/(docs-dev)/v2.3(|.[0-9])(|/.*)$ https://igzdocsdev.wpengine.
 RedirectMatch 301 ^/(docs-dev/[^/]+/intro)/architecture(|/.*)$ https://igzdocsdev.wpengine.com/$1/introduction/
 
 # Trial-QS tutorials GS page (consolidated with the tutorial QS index page)
-RedirectMatch 301 ^/(docs-dev/[^/]+)/tutorials/getting-started/(trial-qs/)overview(|/.*)$ https://igzdocsdev.wpengine.com/$1/intro$2
+RedirectMatch 301 ^/(docs-dev/[^/]+)/tutorials/getting-started/(trial-qs)/overview(|/.*)$ https://igzdocsdev.wpengine.com/$1/intro/$2
 
 # Additional-resources" tutorials GS page (moved to an introduction section)
 RedirectMatch 301 ^/(docs-dev/[^/]+)/tutorials/getting-started/additional-resources(|/.*)$ https://igzdocsdev.wpengine.com/$1/intro/introduction/#platform-resources
@@ -118,7 +136,7 @@ RedirectMatch 301 ^/(docs-dev/latest-release)/intro/setup/(cloud/(aws|azure)/how
 # intro/ecosystem/
 RedirectMatch 301 ^/(docs-dev/latest-release/intro)/ecosystem/(ui)(|/.*)$ https://igzdocsdev.wpengine.com/$1/$2$3
 RedirectMatch 301 ^/(docs-dev/latest-release)/intro/ecosystem/data-fabric(|/.*)$ https://igzdocsdev.wpengine.com/$1/data-layer$2
-RedirectMatch 301 ^/(docs-dev/latest-release)/intro/(app-services)(|/.*)$ https://igzdocsdev.wpengine.com/$1/services/$2$3
+RedirectMatch 301 ^/(docs-dev/latest-release)/intro/ecosystem/(app-services)(|/.*)$ https://igzdocsdev.wpengine.com/$1/services/$2$3
 RedirectMatch 301 ^/(docs-dev/latest-release)/intro/ecosystem(|/.*)$ https://igzdocsdev.wpengine.com/$1/services/
 # intro/logging-n-debugging/
 RedirectMatch 301 ^/(docs-dev/latest-release)/intro/(logging-n-debugging)(|/.*)$ https://igzdocsdev.wpengine.com/$1/cluster-mgmt/$2$3

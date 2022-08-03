@@ -32,7 +32,7 @@ RedirectMatch 301 ^/(docs)/(concepts|intro|reference|release-notes|specs|tutoria
 ## Latest-Release Version-Number URLs
 #(/v<X.Y/X.Y.Z (latest release)>/* > /latest-release/*)
 # [TODO-NEW-VER] Update the hardcoded version number in the source URL.
-RedirectMatch 301 ^/(docs)/v3.4(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release$3
+RedirectMatch 301 ^/(docs)/v3.5(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release$3
 
 ## Next-Release Version-Number URLs
 #(/v<X.Y/X.Y.Z (next minor release)>/* > /latest-release/*)
@@ -43,7 +43,7 @@ RedirectMatch 301 ^/(docs)/v3.4(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com
 # we'll also redirect docs/vX.Y URLs for the next minor release to the latest
 # docs.
 # [TODO-NEW-VER] Update the hardcoded version number in the source URL.
-RedirectMatch 301 ^/(docs)/v3.5(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release$3
+RedirectMatch 301 ^/(docs)/v3.6(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release$3
 
 #///////////////////////////////////////
 ## Removed Old-Release Doc Sites (No Longer Published)
@@ -51,6 +51,24 @@ RedirectMatch 301 ^/(docs)/v3.5(\.[0-9]|)(|/.*)$ https://igzdocsdev.wpengine.com
 # redirected to matching docs/* pages from sites/igzdocsdev/.htaccess. Pages
 # that are no longer found in latest-release are redirected later in this file.
 RedirectMatch 301 ^/(docs)/v(2.3|2.2|2.1|2.0|1.9)(|.[0-9])(|/.*)$ https://igzdocsdev.wpengine.com/$1/latest-release$4
+
+#///////////////////////////////////////
+## External Doc-Site URL Errors
+# [IntInfo] (sharonl) Redirect rules to handle errors in external doc-site
+# links. These rules aren't really required for the staging sites, but I added
+# them for consistency with the public site and for testing.
+
+# ecosystem/app-services/ > intro/ecosystem/app-services/
+# [IntInfo] (sharonl) (17.3.21) I found that the v3.0.0 and v3.0.1 dashboard
+# (UI) Help Center | "Application Services" tile has an error in the URL -
+# missing intro/ - which is probably also true in earlier releases.
+# [SITE-RESTRUCT] In v3.0.0, this URL moved to services/app-services/. This is
+# handled by a redirect rule later in this file. I've now also updated the UI
+# URL, for future releases (after v3.0.1) to refer to to services/app-services/.
+# (Note: I only redirected latest-release/, because until v3.0, the UI doc-site
+# links were always to the latest-release doc site; in v3.0.0 we moved to
+# versioned URLs to match the platform version.)
+RedirectMatch 301 ^/(docs/latest-release)/ecosystem/(app-services)(|/.*)$ https://igzdocsdev.wpengine.com/$1/services/$2$3
 
 #///////////////////////////////////////
 ## Relocated Pages
@@ -62,28 +80,28 @@ RedirectMatch 301 ^/(docs)/v(2.3|2.2|2.1|2.0|1.9)(|.[0-9])(|/.*)$ https://igzdoc
 # from the root sites/<site>/.htaccess file.)
 
 # Data-pipeline intro (removed)
-RedirectMatch 301 /(latest-release/intro)/data-pipeline(|/*)$ https://igzdocsdev.wpengine.com/docs/$1/introduction/
+RedirectMatch 301 ^/(docs/latest-release/intro)/data-pipeline(|/*)$ https://igzdocsdev.wpengine.com/$1/introduction/
 
 # Cloud-trial getting-started tutorials that moved out of the trial QSs
 # Ingestion & consumption QS
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/trial-qs/(ingest-n-consume-files)(|/*)$ https://igzdocsdev.wpengine.com/docs/$1/data-layer/objects/$2/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/trial-qs/(ingest-n-consume-files)(|/*)$ https://igzdocsdev.wpengine.com/$1/data-layer/objects/$2/
 # Grafana-dashboards QS
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/trial-qs/(grafana-dashboards)(|/*)$ https://igzdocsdev.wpengine.com/docs/$1/services/$2/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/trial-qs/(grafana-dashboards)(|/*)$ https://igzdocsdev.wpengine.com/$1/services/$2/
 
 # Presto cloud-trial QS tutorial (removed in v2.0 - reference-doc duplication)
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/trial-qs/(presto)(|/*)$ https://igzdocsdev.wpengine.com/docs/$1/data-layer/$2/overview/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/trial-qs/(presto)(|/*)$ https://igzdocsdev.wpengine.com/$1/data-layer/$2/overview/
 
 # Development QS (removed - non-k8s doc)
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/development-qs(|/*)$ https://igzdocsdev.wpengine.com/docs/$1/intro/introduction
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/development-qs(|/*)$ https://igzdocsdev.wpengine.com/$1/intro/introduction
 
 # Data-copy QS tutorial (removed - non-k8s doc)
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/data-copy-qs(|/*)$ https://igzdocsdev.wpengine.com/docs/$1/data-layer/objects/ingest-n-consume-files/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/data-copy-qs(|/*)$ https://igzdocsdev.wpengine.com/$1/data-layer/objects/ingest-n-consume-files/
 
 # Spark data-ingestion QS tutorial (moved)
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/data-ingestion/(data-ingestion-w-spark-qs)(|/*)$ https://igzdocsdev.wpengine.com/docs/$1/data-layer/$2/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/data-ingestion/(data-ingestion-w-spark-qs)(|/*)$ https://igzdocsdev.wpengine.com/$1/data-layer/$2/
 
 # Data-ingestion QSs tutorials directory (removed)
-RedirectMatch 301 /(latest-release)/tutorials/getting-started/data-ingestion(|/*) $https://igzdocsdev.wpengine.com/docs/$1/intro/data-ingestion-and-preparation/
+RedirectMatch 301 ^/(docs/latest-release)/tutorials/getting-started/data-ingestion(|/*)$ https://igzdocsdev.wpengine.com/$1/intro/data-ingestion-and-preparation/
 
 #---------------------------------------
 ## Pages Removed in v2.5 and v2.3 Post Publication
@@ -93,7 +111,7 @@ RedirectMatch 301 /(latest-release)/tutorials/getting-started/data-ingestion(|/*
 RedirectMatch 301 ^/(docs/[^/]+/intro)/architecture(|/.*)$ https://igzdocsdev.wpengine.com/$1/introduction/
 
 # Trial-QS tutorials GS page (consolidated with the tutorial QS index page)
-RedirectMatch 301 ^/(docs/[^/]+)/tutorials/getting-started/(trial-qs/)overview(|/.*)$ https://igzdocsdev.wpengine.com/$1/intro$2
+RedirectMatch 301 ^/(docs/[^/]+)/tutorials/getting-started/(trial-qs)/overview(|/.*)$ https://igzdocsdev.wpengine.com/$1/intro/$2
 
 # Additional-resources" tutorials GS page (moved to an introduction section)
 RedirectMatch 301 ^/(docs/[^/]+)/tutorials/getting-started/additional-resources(|/.*)$ https://igzdocsdev.wpengine.com/$1/intro/introduction/#platform-resources
@@ -140,7 +158,7 @@ RedirectMatch 301 ^/(docs/latest-release)/intro/setup/(cloud/(aws|azure)/howto)/
 # intro/ecosystem/
 RedirectMatch 301 ^/(docs/latest-release/intro)/ecosystem/(ui)(|/.*)$ https://igzdocsdev.wpengine.com/$1/$2$3
 RedirectMatch 301 ^/(docs/latest-release)/intro/ecosystem/data-fabric(|/.*)$ https://igzdocsdev.wpengine.com/$1/data-layer$2
-RedirectMatch 301 ^/(docs/latest-release)/intro/(app-services)(|/.*)$ https://igzdocsdev.wpengine.com/$1/services/$2$3
+RedirectMatch 301 ^/(docs/latest-release)/intro/ecosystem/(app-services)(|/.*)$ https://igzdocsdev.wpengine.com/$1/services/$2$3
 RedirectMatch 301 ^/(docs/latest-release)/intro/ecosystem(|/.*)$ https://igzdocsdev.wpengine.com/$1/services/
 # intro/logging-n-debugging/
 RedirectMatch 301 ^/(docs/latest-release)/intro/(logging-n-debugging)(|/.*)$ https://igzdocsdev.wpengine.com/$1/cluster-mgmt/$2$3
