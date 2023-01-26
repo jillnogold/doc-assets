@@ -74,6 +74,11 @@ RedirectMatch 301 ^/(docs/latest-release)/ecosystem/(app-services)(|/.*)$ https:
 ## Relocated Pages
 # [ci-redirect-from-ver-site] [InfraInfo] See gulpfile.js in the doc-site repo.
 
+# Spark page moved
+RedirectMatch 301 ^/([^/]+)/data-layer/spark-data-ingestion-qs(|/.*)$ https://igzdocsdev.wpengine.com/docs/$1/data-layer/reference/spark-apis/spark-data-ingestion-qs/#$2
+
+
+
 #---------------------------------------
 ## Pages Moved or Removed in v2.0
 # (The old v1.9-v2.2 URLs are redirected to the current-site latest-release docs
